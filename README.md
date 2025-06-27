@@ -8,19 +8,41 @@ We are utilizing [Microsoft Reference Architecture for SDV](https://learn.micros
 The solution operates as a data-driven pipeline for real-time predictive maintenance. Telemetry data is continuously streamed from vehicles to the cloud, where it is processed, enriched, and used to train a machine learning model that estimates brake pad wear based on driving behavior. Once trained, the model runs inference on incoming data in real time. Both raw telemetry and wear predictions are displayed through a live dashboard, enabling continuous monitoring of vehicle condition.
 
 The following schematic diagram provides a high level overview of the solution.
-<img src="images/solution-schematic-diagram.png">
+![Solution schematic diagram](images/solution-schematic-diagram.png)
 
 Implementation consists of the following main parts:
-- Software/Hardware for simulating real-time data from vehicle sensors
+- Software/hardware for simulating real-time data from vehicle sensors
 - Software for collecting and processing vehicle data
 - ML model for predicting the brake pads wear
 - Dashboard showing vehicle live data as well as the brake pads wear prediction
 
 ### In a vehicle
+In the current implementation, there are three supported ways to simulate real-time vehicle telemetry:
+1. **Use the VehicleSimulator .NET console application included in the solution.**
+   
+   It can simulate vehicle driving and send specified telemetry parameters to the cloud. You can configure coefficients, minimum and maximum values to simulate different driving behaviors. This is the easiest and fastest way to simulate vehicle telemetry.
+   
+2. **Use the [Euro Truck Simulator 2](https://eurotrucksimulator2.com/) video game.**
+   
+   We have included a custom module in the solution that can be embedded into the game. This module automatically sends telemetry data from the game to the cloud during truck driving.
+   
+   **Note:** *Euro Truck Simulator 2 is not included in the solution and must be installed separately.*
+   
+3. **Use a specially developed hardware stand.**
+   
+   The stand replicates part of a real car, including an electric motor and sensors. It allows a person to sit in the driver's seat, turn the steering wheel, and press the brake or accelerator pedals. Telemetry from the stand is transmitted to the cloud in real time.
 
-TBD
+(~~Ask Sergey for clarifications and additional information~~)
 
 ### Off a vehicle
+We have adapted [Microsoft Reference Architecture for SDV](https://learn.microsoft.com/en-us/azure/event-grid/mqtt-automotive-connectivity-and-data-solution) to our proof of concept needs.
+
+![Solution schematic diagram](images/off-vehicle-architecture.png)
+
+The vehicle publishes telemetry and events messages through a Message Queuing Telemetry Transport (MQTT) client with defined topics to the Azure Event Grid’s MQTT broker feature
+
+The Event Grid can route messages to different subscribers based on the topic and message attributes.
+Low priority messages that don't require immediate processing (for example, analytics messages) are routed directly to storage using an Event Hubs instance for buffering.
 
 ### Dashboard
 
