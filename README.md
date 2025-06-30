@@ -8,6 +8,7 @@ We are utilizing [Microsoft Reference Architecture for SDV](https://learn.micros
 The solution operates as a data-driven pipeline for real-time predictive maintenance. Telemetry data is continuously streamed from vehicles to the cloud, where it is processed, enriched, and used to train a machine learning model that estimates brake pad wear based on driving behavior. Once trained, the model runs inference on incoming data in real time. Both raw telemetry and wear predictions are displayed through a live dashboard, enabling continuous monitoring of vehicle condition.
 
 The following schematic diagram provides a high level overview of the solution.
+
 ![Solution schematic diagram](images/solution-schematic-diagram.png)
 
 Implementation consists of the following main parts:
@@ -59,6 +60,7 @@ Finally, real-time telemetry and predicted brake wear are displayed on the dashb
 
 ### Dashboard
 The dashboard presents basic real-time telemetry directly from Azure Event Grid (*Real-time telemetry* on the screenshot below) together with predicted brake pads replacement time and distance (*Analytics* on the screenshot).
+
 ![Dashboard screenshot](images/dashboard-screenshot.png)
 
 The dashboard has been implemented as a Databricks application using the Dash framework in Python.
