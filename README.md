@@ -32,10 +32,10 @@ In the current implementation, there are three supported ways to simulate real-t
    
    The stand replicates part of a real car, including an electric motor and sensors. It allows a person to sit in the driver's seat, turn the steering wheel, and press the brake or accelerator pedals. Telemetry from the stand is transmitted to the cloud in real time.
 
-(~~Ask Sergey for clarifications and additional information~~)
+(~~Ask Sergey for clarifications and additional information about hardware stand and how we use KUKSA~~)
 
 ### Off a vehicle
-We have adapted [Microsoft Reference Architecture for SDV](https://learn.microsoft.com/en-us/azure/event-grid/mqtt-automotive-connectivity-and-data-solution) to our proof of concept needs.
+The schema below illustrates the complete off-vehicle flow, starting from receiving telemetry in the cloud and ending with applying a trained ML model to predict brake wear, as well as displaying real-time vehicle data and predictions on the dashboard. We have adapted [Microsoft Reference Architecture for SDV](https://learn.microsoft.com/en-us/azure/event-grid/mqtt-automotive-connectivity-and-data-solution) to meet the needs of this proof of concept.
 
 ![Solution schematic diagram](images/off-vehicle-architecture.png)
 
