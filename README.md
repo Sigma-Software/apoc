@@ -55,10 +55,10 @@ Once a sufficient volume of data has been collected in Gold storage, we can star
 
 At the same time, in parallel with data accumulation, the already trained model is used to predict brake wear based on incoming telemetry.
 
-Finally, real-time telemetry and predicted brake wear are displayed on a dashboard.
+Finally, real-time telemetry and predicted brake wear are displayed on the dashboard.
 
 ### Dashboard
-The dashboard presents real-time telemetry directly from Azure Event Grid (*Real-time telemetry* on the screenshot below) and predicted brake wear (*Analytics* on the screenshot).
+The dashboard presents basic real-time telemetry directly from Azure Event Grid (*Real-time telemetry* on the screenshot below) together with predicted brake pads replacement time and distance (*Analytics* on the screenshot).
 ![Dashboard screenshot](images/dashboard-screenshot.png)
 
 The dashboard has been implemented as a Databricks application using the Dash framework in Python.
